@@ -1,0 +1,36 @@
+---
+import X from "@/assets/x.svg";
+import Instagram from "@/assets/instagram.svg";
+---
+
+<header class="header w-full h-30 bg-black p-10 flex text-white items-center fixed">
+    <h1 class="text-white text-4xl justify-center flex w-full h-full">
+        DOCKERS
+    </h1>
+    <div class="absolute flex right-0 gap-5 mr-5">
+        <a target="_blank" href="www.google.com">
+            <X class="h-7 w-7 hover:scale-125 transition" />
+        </a>
+        <a target="_blank" href="www.google.com">
+            <Instagram class="h-7 w-7 hover:scale-125 transition" />
+        </a>
+    </div>
+</header>
+
+<style>
+    .header {
+        animation: header-scroll 1s linear both;
+        animation-timeline: scroll();
+        animation-range: 0 250;
+    }
+    
+    
+    @keyframes header-scroll {
+        0% {
+            background-color: transparent;
+        }
+        100% {
+            background-color: black;
+        }
+    }
+</style>
