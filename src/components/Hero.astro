@@ -1,19 +1,47 @@
----
-import HeroImage from "@/assets/hero-burger.webp";
----
-
-<section class="bg-black h-screen">
+<section class="bg-red-500 h-screen">
     <div
-        class="text-white bg-cover bg-center w-full h-screen inline-block items-center justify-between p-30"
-        style={`background-image: url(${HeroImage.src})`}
+        class="bg-[url(images/hero-burger.webp)] text-white bg-cover bg-center w-full h-screen inline-block items-center justify-between p-30"
     >
         <h1 class="text-7xl">Taste your childhood...</h1>
         <h1 class="text-6xl">Just one bite...</h1>
+
+        <svg class="pathStyle"><path/></svg>
 
         <h1 class="text-7xl justify-self-end mt-10">Prueba nuestra BOND</h1>
     </div>
     <div
         class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-black to-transparent"
-    >
-    </div>
+    />
 </section>
+
+<style>
+    .pathStyle {
+        position: absolute;
+        z-index: 1;
+        fill: none;
+    }
+
+    .pathStyle path {
+        stroke: white;
+        width: 100%;
+        height: 100%;
+        top: -20%;
+        left: -15%;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 0;
+        animation: pathAnimation 4s linear infinite;
+        d: path("M 50,50 A 50,25 0 1,0 150,50 A 50,25 0 1,0 50,50");
+    }
+
+    @keyframes pathAnimation {
+        0% {
+            stroke-dashoffset: 1000;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+        
+    }
+</style>
