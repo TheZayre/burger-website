@@ -5,21 +5,28 @@ import Instagram from "@/assets/instagram.svg";
 ---
 
 <header
-    class="header w-full h-10 bg-black p-10 flex text-white items-center fixed"
+    class="header w-full h-10 bg-black p-10 flex text-white items-center fixed z-50"
 >
     <a target="_blank" href="www.google.com">
-        <Logo class="h-12 w-12 transition" />
+        <Logo id="logo" class="h-10 w-10" />
     </a>
 
     <div class="absolute flex right-0 gap-5 mr-5">
         <a target="_blank" href="www.google.com">
-            <X class="h-8 w-8 hover:scale-125 transition" />
+            <X class="h-7 w-7 hover:scale-125 transition" />
         </a>
         <a target="_blank" href="www.google.com">
-            <Instagram class="h-8 w-8 hover:scale-125 transition" />
+            <Instagram class="h-7 w-7 hover:scale-125 transition" />
         </a>
     </div>
 </header>
+
+<script>
+    const logo = document.getElementById("logo");
+    logo.addEventListener("click", () => {
+        window.location.href = "/";
+    });
+</script>
 
 <style>
     .header {

@@ -8,8 +8,10 @@
 @theme {
     --font-*: initial;
     --font-sans: LEMONMILK, sans;
-    --color-primary: #FBA038;
-    --color-primary-dark: #E6832E;
+    --color-primary: #5ebeff;
+    --color-primary-dark: #0067ac;
+
+    --color-primary-rgb: rgba(94, 190, 255, 0.3);
 }
 
 @layer styles {

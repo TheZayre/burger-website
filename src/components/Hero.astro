@@ -1,22 +1,62 @@
-<section class="bg-black h-screen">
-    <article
-        class="text-white bg-cover bg-center w-full h-screen items-center text-center p-40"
-    >
-        <h1 class="text-5xl">Jose Á. Perea García</h1>
-        <h2 class="bg-text-color text-3xl mt-4 bg-gradient-to-l to-blue-400 from-blue-800">Software Engineer & Monkey Lover</h2>
-
-        <p class="text-white text-sm mt-10 text-balance">Quien lea esto es gay, asi que cuidado.</p>
-        <svg class="pathStyle"><path/></svg>
-</article>
+<section class="bg-[rgb(0,0,0,0.2)] h-screen">
     <div
+        class="absolute bg-[radial-gradient(circle,var(--color-primary-rgb)_10%,rgba(0,0,0,0)_80%)] w-full h-full z-1"
+    >
+    </div>
+    <article
+        class="text-white w-full h-screen items-center text-center p-20 z-2 absolute"
+    >
+        <h1 class="text-5xl mt-10">Jose Á. Perea García</h1>
+        <h2
+            class="bg-text-color text-3xl mt-4 bg-gradient-to-l to-primary from-primary-dark animate-gradient"
+        >
+            Software Engineer & Monkey Lover
+        </h2>
+
+        <p class="text-white text-sm mt-10 text-balance">
+            <!-- <svg class="pathStyle"><path/></svg> -->
+            Si pones infinitos monos a programar, obtendrias en algún momento Google
+            Maps.
+        </p>
+
+        <div
+            class="w-50 sm:w-100 mt-10 border-1 rounded-2xl bg-transparent p-5 text-left"
+        >
+            <p class="text-white text-xs text-balance">
+                Hola, soy Jose Ángel Perea García, la persona mas maricona del
+                mundo, aunque eso era antes de conocer a Paula, ella ha curado
+                mi mariconería, y ahora soy muy feliz.
+            </p>
+        </div>
+    </article>
+
+    <!-- <div
         class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-white to-transparent"
-    />
+    >
+    </div> -->
 </section>
 
 <style>
+    .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradientAnimation 5s both infinite;
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
     .pathStyle {
         position: absolute;
-        left: 43.5%;
+        left: 43%;
         top: 30%;
         z-index: 1;
         fill: none;
@@ -43,6 +83,5 @@
         100% {
             stroke-dashoffset: 0;
         }
-        
     }
 </style>
