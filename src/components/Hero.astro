@@ -1,22 +1,23 @@
-<section class="bg-red-500 h-screen">
-    <div
-        class="bg-[url(images/hero-burger.webp)] text-white bg-cover bg-center w-full h-screen inline-block items-center justify-between p-30"
+<section class="bg-black h-screen">
+    <article
+        class="text-white bg-cover bg-center w-full h-screen items-center text-center p-40"
     >
-        <h1 class="text-7xl">Taste your childhood...</h1>
-        <h1 class="text-6xl">Just one bite...</h1>
+        <h1 class="text-5xl">Jose Á. Perea García</h1>
+        <h2 class="bg-text-color text-3xl mt-4 bg-gradient-to-l to-blue-400 from-blue-800">Software Engineer & Monkey Lover</h2>
 
+        <p class="text-white text-sm mt-10 text-balance">Quien lea esto es gay, asi que cuidado.</p>
         <svg class="pathStyle"><path/></svg>
-
-        <h1 class="text-7xl justify-self-end mt-10">Prueba nuestra BOND</h1>
-    </div>
+</article>
     <div
-        class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-black to-transparent"
+        class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-white to-transparent"
     />
 </section>
 
 <style>
     .pathStyle {
         position: absolute;
+        left: 43.5%;
+        top: 30%;
         z-index: 1;
         fill: none;
     }
@@ -27,12 +28,12 @@
         height: 100%;
         top: -20%;
         left: -15%;
-        stroke-width: 5;
+        stroke-width: 2;
         stroke-linecap: round;
         stroke-dasharray: 1000;
         stroke-dashoffset: 0;
-        animation: pathAnimation 4s linear infinite;
-        d: path("M 50,50 A 50,25 0 1,0 150,50 A 50,25 0 1,0 50,50");
+        animation: pathAnimation 10s ease-in-out both;
+        d: path("M50,50 L80,50");
     }
 
     @keyframes pathAnimation {

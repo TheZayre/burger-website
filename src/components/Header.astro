@@ -1,17 +1,17 @@
 ---
 import X from "@/assets/x.svg";
+import Logo from "@/assets/logo.svg";
 import Instagram from "@/assets/instagram.svg";
 ---
 
 <header
-    class="header w-full h-30 bg-black p-10 flex text-white items-center fixed"
+    class="header w-full h-10 bg-black p-10 flex text-white items-center fixed"
 >
-    <h1
-        id="logo"
-        class="logo text-white text-7xl justify-center items-center flex w-full h-full"
-    >
-    </h1>
-    <div class="absolute z-50 flex right-0 gap-5 mr-5">
+    <a target="_blank" href="www.google.com">
+        <Logo class="h-12 w-12 transition" />
+    </a>
+
+    <div class="absolute flex right-0 gap-5 mr-5">
         <a target="_blank" href="www.google.com">
             <X class="h-8 w-8 hover:scale-125 transition" />
         </a>
@@ -36,22 +36,3 @@ import Instagram from "@/assets/instagram.svg";
         }
     }
 </style>
-<script>
-    const logo = document.getElementById("logo");
-    let text = "";
-    const fullText = "00B";
-    let index = 0;
-
-    function typeWriter() {
-        if (index < fullText.length) {
-            text += fullText.charAt(index);
-            if (logo) {
-                logo.textContent = text;
-            }
-            index++;
-            setTimeout(typeWriter, 200);
-        }
-    }
-
-    typeWriter();
-</script>

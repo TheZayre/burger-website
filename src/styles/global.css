@@ -1,12 +1,21 @@
 @import "tailwindcss";
+
 @font-face {
-    font-family: 'TheGodfather';
-    src: url('../fonts/TheGodfather.ttf'),
+    font-family: 'LEMONMILK';
+    src: url('../fonts/LEMONMILK.otf'),
 }
 
 @theme {
-    --font-*:initial;
-    --font-sans: TheGodfather, sans;
+    --font-*: initial;
+    --font-sans: LEMONMILK, sans;
     --color-primary: #FBA038;
     --color-primary-dark: #E6832E;
 }
+
+@layer styles {
+    .bg-text-color {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+  }
