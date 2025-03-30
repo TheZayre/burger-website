@@ -29,7 +29,13 @@
             </p>
         </div>
 
-        <img id="me" src="/me/1.png"></img>
+    <div class="absolute w-full h-full">
+        <div class="absolute w-18 h-10 top-18 left-42 sm:top-20 sm:left-44.5 bg-white sm:rotate-12" id="movementArea">
+            <img id="eyes" class="absolute pointer-events-none sm:rotate-180" src="/eyes.webp"></img>
+        </div>
+        <img id="me" class="absolute pointer-events-none" src="/me/1.png"></img>
+    </div>
+        
     </article>
 
     <!-- <div
@@ -37,6 +43,43 @@
     >
     </div> -->
 </section>
+
+<script>
+    const container = document.getElementById("movementArea");
+    const image = document.getElementById("eyes");
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    const easing = 0.1; // Ajusta este valor para controlar la suavidad del movimiento
+
+    document.addEventListener("mousemove", (event) => {
+        const rect = container.getBoundingClientRect();
+
+        // Calcular las coordenadas relativas al contenedor
+        targetX = event.clientX - rect.left - image.offsetWidth / 2;
+        targetY = event.clientY - rect.top - image.offsetHeight / 2;
+
+        // Limitar las coordenadas dentro del contenedor
+        targetX = Math.max(0, Math.min(targetX, rect.width - image.offsetWidth));
+        targetY = Math.max(0, Math.min(targetY, rect.height - image.offsetHeight));
+    });
+
+    function animate() {
+        // Interpolar suavemente hacia las coordenadas objetivo
+        currentX += (targetX - currentX) * easing;
+        currentY += (targetY - currentY) * easing;
+
+        // Actualizar la posición de la imagen
+        image.style.left = currentX + "px";
+        image.style.top = currentY + "px";
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+</script>
 
 <script>
     const me = document.getElementById("me");
@@ -47,6 +90,7 @@
         me.src = `/me/${currentImageIndex}.png`;
     }, 50); // Change image every 1 second
 </script>
+
 
 <style>
     .animate-gradient {
