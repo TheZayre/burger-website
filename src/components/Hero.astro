@@ -28,6 +28,8 @@
                 mi mariconería, y ahora soy muy feliz.
             </p>
         </div>
+
+        <img id="me" src="/me/1.png"></img>
     </article>
 
     <!-- <div
@@ -35,6 +37,16 @@
     >
     </div> -->
 </section>
+
+<script>
+    const me = document.getElementById("me");
+    let currentImageIndex = parseInt(me.src.split('/').pop().split('.')[0]);
+
+    setInterval(() => {
+        currentImageIndex = currentImageIndex < 60 ? currentImageIndex + 1 : 1;
+        me.src = `/me/${currentImageIndex}.png`;
+    }, 50); // Change image every 1 second
+</script>
 
 <style>
     .animate-gradient {
