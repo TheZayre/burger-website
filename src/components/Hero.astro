@@ -19,21 +19,24 @@
             Maps.
         </p>
 
-        <div
-            class="w-50 sm:w-100 mt-10 border-1 rounded-2xl bg-transparent p-5 text-left"
-        >
-            <p class="text-white text-xs text-balance">
-                Hola, soy Jose Ángel Perea García, la persona mas maricona del
-                mundo, aunque eso era antes de conocer a Paula, ella ha curado
-                mi mariconería, y ahora soy muy feliz.
-            </p>
+
+    <div class="flex mt-10 justify-center">
+        <div class="relative h-full">
+            <div id="movementArea" class="eyes-movement absolute w-10 h-10 top-18 left-42 sm:top-20 sm:left-44.5 sm:w-18 bg-white">
+                <img id="eyes" class="relative pointer-events-none" src="/eyes.webp"/>
+            </div>
+            <img id="me" class="relative pointer-events-none" src="/me/1.png"></img>
         </div>
 
-    <div class="absolute w-full h-full">
-        <div class="absolute w-18 h-10 top-18 left-42 sm:top-20 sm:left-44.5 bg-white sm:rotate-12" id="movementArea">
-            <img id="eyes" class="absolute pointer-events-none sm:rotate-180" src="/eyes.webp"></img>
-        </div>
-        <img id="me" class="absolute pointer-events-none" src="/me/1.png"></img>
+
+        <div
+        class="w-50 sm:w-100 mt-10 border-1 rounded-2xl bg-transparent p-5 text-left mb-5"
+    >
+        <p class="text-white text-xs text-balance">
+            Hola, soy Jose Ángel Perea García, la persona mas maricona del
+            mundo.
+        </p>
+    </div>
     </div>
         
     </article>
@@ -55,9 +58,11 @@
     const easing = 0.1; // Ajusta este valor para controlar la suavidad del movimiento
 
     document.addEventListener("mousemove", (event) => {
+        if (!container) return;
         const rect = container.getBoundingClientRect();
 
         // Calcular las coordenadas relativas al contenedor
+        if (!image) return;
         targetX = event.clientX - rect.left - image.offsetWidth / 2;
         targetY = event.clientY - rect.top - image.offsetHeight / 2;
 
@@ -72,8 +77,10 @@
         currentY += (targetY - currentY) * easing;
 
         // Actualizar la posición de la imagen
-        image.style.left = currentX + "px";
-        image.style.top = currentY + "px";
+        if (image) {
+            image.style.left = currentX + "px";
+            image.style.top = currentY + "px";
+        }
 
         requestAnimationFrame(animate);
     }
@@ -93,6 +100,20 @@
 
 
 <style>
+        .eyes-movement {
+        background-size: 200% 200%;
+        animation: eyesAnimation 3s both infinite;
+    }
+
+    @keyframes eyesAnimation {
+        30% {
+            transform: translateX(5px);
+        }
+        50%{
+            transform: translateX(0px);
+        }
+    }
+
     .animate-gradient {
         background-size: 200% 200%;
         animation: gradientAnimation 5s both infinite;
