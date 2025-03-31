@@ -4,40 +4,35 @@
     >
     </div>
     <article
-        class="text-white w-full h-screen items-center text-center p-20 z-2 absolute"
+        class="text-white w-full h-screen flex flex-col items-center text-center p-4 sm:p-20 z-2 absolute"
     >
-        <h1 class="text-5xl mt-10">Jose Á. Perea García</h1>
+        <h1 class="text-4xl sm:text-5xl mt-10">Jose Á. Perea García</h1>
         <h2
-            class="bg-text-color text-3xl mt-4 bg-gradient-to-l to-primary from-primary-dark animate-gradient"
+            class="bg-text-color text-2xl sm:text-3xl mt-4 bg-gradient-to-l to-primary from-primary-dark animate-gradient"
         >
             Software Engineer & Monkey Lover
         </h2>
 
-        <p class="text-white text-sm mt-10 text-balance">
-            <!-- <svg class="pathStyle"><path/></svg> -->
+        <p class="text-white text-sm mt-6 sm:mt-10 text-balance">
             Si pones infinitos monos a programar, obtendrias en algún momento Google
             Maps.
         </p>
 
-
-    <div class="flex mt-10 justify-center">
-        <div class="relative h-full">
-            <div id="movementArea" class="eyes-movement absolute w-10 h-10 top-18 left-42 sm:top-20 sm:left-44.5 sm:w-18 bg-white">
-                <img id="eyes" class="relative pointer-events-none" src="/eyes.webp"/>
+        <div class="flex flex-col sm:flex-row mt-6 sm:mt-10 justify-center items-center gap-4">
+            <div class="relative">
+                <div id="movementArea" class="eyes-movement bg-white absolute w-[20%] h-[5.2%] left-[43.5%] top-[13%]">
+                    <img id="eyes" class="relative pointer-events-none w-[75%] h-[80%]" src="/eyes.webp"/>
+                </div>
+                <img id="me" class="relative pointer-events-none w-48 sm:w-64" src="/me/1.png"></img>
             </div>
-            <img id="me" class="relative pointer-events-none" src="/me/1.png"></img>
+
+            <div class="w-full sm:w-100 border-1 rounded-2xl bg-transparent p-4 sm:p-5 text-left">
+                <p class="text-white text-xs sm:text-sm text-balance">
+                    Hola, soy Jose Ángel Perea García, la persona mas maricona del
+                    mundo.
+                </p>
+            </div>
         </div>
-
-
-        <div
-        class="w-50 sm:w-100 mt-10 border-1 rounded-2xl bg-transparent p-5 text-left mb-5"
-    >
-        <p class="text-white text-xs text-balance">
-            Hola, soy Jose Ángel Perea García, la persona mas maricona del
-            mundo.
-        </p>
-    </div>
-    </div>
         
     </article>
 
@@ -90,14 +85,14 @@
 
 <script>
     const me = document.getElementById("me");
+    if(!me) return;
     let currentImageIndex = parseInt(me.src.split('/').pop().split('.')[0]);
 
     setInterval(() => {
         currentImageIndex = currentImageIndex < 60 ? currentImageIndex + 1 : 1;
         me.src = `/me/${currentImageIndex}.png`;
-    }, 50); // Change image every 1 second
+        }, 50);
 </script>
-
 
 <style>
         .eyes-movement {
@@ -107,9 +102,14 @@
 
     @keyframes eyesAnimation {
         30% {
-            transform: translateX(5px);
+            transform: translateY(6px);
+            transform: translateX(5.5px);
         }
         50%{
+            transform: translateY(0px);
+        }
+        
+        70%{
             transform: translateX(0px);
         }
     }
