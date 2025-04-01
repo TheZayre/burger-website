@@ -14,33 +14,47 @@
         </h2>
 
         <p class="text-white text-sm mt-6 sm:mt-10 text-balance">
-            Si pones infinitos monos a programar, obtendrias en algún momento Google
-            Maps.
+            Si pones infinitos monos a programar, obtendrias en algún momento
+            Google Maps.
         </p>
 
-        <div class="flex flex-col sm:flex-row mt-6 sm:mt-10 justify-center items-center gap-4">
+        <div
+            class="flex flex-col sm:flex-row mt-6 sm:mt-10 justify-center items-center gap-4"
+        >
             <div class="relative">
-                <div id="movementArea" class="eyes-movement bg-white absolute w-[20%] h-[5.2%] left-[43.5%] top-[13%]">
-                    <img id="eyes" class="relative pointer-events-none w-[75%] h-[80%]" src="/eyes.webp"/>
+                <div
+                    id="movementArea"
+                    class="bg-white absolute w-[20%] h-[5.2%] left-[43.5%] top-[13%]"
+                >
+                    <img
+                        id="eyes"
+                        class="relative pointer-events-none w-[75%] h-[80%]"
+                        src="/eyes.webp"
+                    />
                 </div>
-                <img id="me" class="relative pointer-events-none w-48 sm:w-64" src="/me/1.png"></img>
+                <img
+                    id="me"
+                    class="relative pointer-events-none w-48 sm:w-64"
+                    src="/me/1.png"
+                />
             </div>
 
-            <div class="w-full sm:w-100 border-1 rounded-2xl bg-transparent p-4 sm:p-5 text-left">
+            <div
+                class="h-full w-100 border-1 rounded-2xl bg-transparent p-4 sm:p-5 text-left"
+            >
                 <p class="text-white text-xs sm:text-sm text-balance">
-                    Hola, soy Jose Ángel Perea García, la persona mas maricona del
-                    mundo.
+                    Hola, soy Jose Ángel Perea García, la persona mas maricona
+                    del mundo.
                 </p>
             </div>
         </div>
-        
     </article>
+</section>
 
-    <!-- <div
+<!-- <div
         class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-white to-transparent"
     >
     </div> -->
-</section>
 
 <script>
     const container = document.getElementById("movementArea");
@@ -62,8 +76,14 @@
         targetY = event.clientY - rect.top - image.offsetHeight / 2;
 
         // Limitar las coordenadas dentro del contenedor
-        targetX = Math.max(0, Math.min(targetX, rect.width - image.offsetWidth));
-        targetY = Math.max(0, Math.min(targetY, rect.height - image.offsetHeight));
+        targetX = Math.max(
+            0,
+            Math.min(targetX, rect.width - image.offsetWidth),
+        );
+        targetY = Math.max(
+            0,
+            Math.min(targetY, rect.height - image.offsetHeight),
+        );
     });
 
     function animate() {
@@ -84,18 +104,38 @@
 </script>
 
 <script>
+    const preloadImage = (src: string) =>
+        new Promise((resolve, reject) => {
+            const image = new Image();
+            image.onload = resolve;
+            image.onerror = reject;
+            image.src = src;
+        });
+
+    await Promise.all(
+        Array.from({ length: 60 }, (_, i) => {
+            const index = i + 1;
+            return preloadImage(`/me/${index}.png`);
+        }),
+    );
+
     const me = document.getElementById("me");
-    if(!me) return;
-    let currentImageIndex = parseInt(me.src.split('/').pop().split('.')[0]);
+
+    let currentImageIndex = parseInt(me.src.split("/").pop().split(".")[0]);
+
+    const movementArea = document.getElementById("movementArea");
+    if (movementArea) {
+        movementArea.classList.add("eyes-movement");
+    }
 
     setInterval(() => {
         currentImageIndex = currentImageIndex < 60 ? currentImageIndex + 1 : 1;
         me.src = `/me/${currentImageIndex}.png`;
-        }, 50);
+    }, 50);
 </script>
 
 <style>
-        .eyes-movement {
+    .eyes-movement {
         background-size: 200% 200%;
         animation: eyesAnimation 3s both infinite;
     }
@@ -103,13 +143,13 @@
     @keyframes eyesAnimation {
         30% {
             transform: translateY(6px);
-            transform: translateX(5.5px);
+            transform: translateX(5px);
         }
-        50%{
+        50% {
             transform: translateY(0px);
         }
-        
-        70%{
+
+        70% {
             transform: translateX(0px);
         }
     }
