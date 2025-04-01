@@ -1,0 +1,74 @@
+---
+import { experiences } from "@/constants";
+---
+
+<section class="h-100 flex justify-center gap-4 p-5">
+    <div class={`text-white flex-1 text-left`}>
+        {
+            experiences?.left.map((experience) => (
+                <div class={experience.height}>
+                    <h1 class="text-primary font-bold fade-in">
+                        {experience.company}
+                        <span class="text-xs">({experience.period})</span>
+                    </h1>
+                    <p class="text-white text-sm flex-1 fade-in">
+                        {experience.description}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+
+    <div class="w-0.5 h-full border-1 border-white rounded-full relative">
+        <div
+            class={`absolute w-5 h-5 bg-white rounded-full top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+        >
+        </div>
+    </div>
+
+    <div class={`text-white flex-1 text-left`}>
+        {
+            experiences?.right.map((experience) => (
+                <div class={experience.height}>
+                    <h1 class="text-primary font-bold fade-in">
+                        {experience.company}
+                        <span class="text-xs">({experience.period})</span>
+                    </h1>
+                    <p class="text-white text-sm flex-1 fade-in">
+                        {experience.description}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<script>
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        },
+        { threshold: 0.1 },
+    );
+
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+</script>
+
+<style>
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+            opacity 1s ease-out,
+            transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
