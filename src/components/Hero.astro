@@ -24,7 +24,7 @@
             <div class="relative">
                 <div
                     id="movementArea"
-                    class="bg-white absolute w-[20%] h-[5.2%] left-[43.5%] top-[13%]"
+                    class="bg-white absolute w-[20%] h-[5.2%] left-[43.5%] top-[13%] transition-all rounded-sm "
                 >
                     <img
                         id="eyes"
@@ -45,7 +45,13 @@
                 class="h-full w-100 border-1 rounded-2xl bg-transparent p-4 sm:p-5 text-left"
             >
                 <p class="text-white text-xs sm:text-sm text-balance">
-                    ¡Hola! Soy Jose, Apasionado por la tecnología y la creatividad en todas sus formas. No solo escribo código, sino que diseño soluciones que impactan y mejoran la vida de las personas. Me encanta aprender y compartir conocimientos, así que no dudes en contactarme si quieres hablar sobre tecnología, diseño o cualquier otra cosa. ¡Estoy aquí para ayudar!
+                    ¡Hola! Soy Jose, Apasionado por la tecnología y la
+                    creatividad en todas sus formas. No solo escribo código,
+                    sino que diseño soluciones que impactan y mejoran la vida de
+                    las personas. Me encanta aprender y compartir conocimientos,
+                    así que no dudes en contactarme si quieres hablar sobre
+                    tecnología, diseño o cualquier otra cosa. ¡Estoy aquí para
+                    ayudar!
                 </p>
             </div>
         </div>
@@ -59,9 +65,6 @@
 
 <script>
     const movementArea = document.getElementById("movementArea");
-    if (movementArea) {
-        movementArea.classList.remove("eyes-movement");
-    }
 
     const preloadImage = (src: string) =>
         new Promise((resolve, reject) => {
@@ -83,10 +86,20 @@
             await preloadImage(nextImageSrc);
             if (currentImageIndex === 60)
                 if (
-                    movementArea &&
-                    !movementArea.classList.contains("eyes-movement")
+                    movementArea
                 )
-                    movementArea.classList.add("eyes-movement");
+                    movementArea.animate(
+                        [
+                            { transform: "translate(0px, 0px)", offset: 0 },
+                            { transform: "translate(5px, 6px)", offset: 0.3 },
+                            { transform: "translate(0px, 0px)", offset: 0.5 },
+                            { transform: "translate(0px, 0px)", offset: 0.7 },
+                        ],
+                        {
+                            duration: 3000,
+                            iterations: Infinity,
+                        }
+                    );
 
             me.src = nextImageSrc;
         } catch (error) {
@@ -143,24 +156,6 @@
 </script>
 
 <style>
-    .eyes-movement {
-        background-size: 200% 200%;
-        animation: eyesAnimation 3s normal infinite;
-    }
-
-    @keyframes eyesAnimation {
-        30% {
-            transform: translateY(6px);
-            transform: translateX(5px);
-        }
-        50% {
-            transform: translateY(0px);
-        }
-
-        70% {
-            transform: translateX(0px);
-        }
-    }
 
     .animate-gradient {
         background-size: 200% 200%;
