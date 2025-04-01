@@ -63,7 +63,8 @@
 
     <div
         class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-transparent via-primary-rgb to-transparent opacity"
-    />
+    >
+    </div>
 </section>
 
 <script>
@@ -71,7 +72,7 @@
     if (movementArea) {
         movementArea.classList.remove("eyes-movement");
     }
-    
+
     const preloadImage = (src: string) =>
         new Promise((resolve, reject) => {
             const image = new Image();
@@ -80,15 +81,9 @@
             image.src = src;
         });
 
-
-
     const me = document.getElementById("me");
 
     let currentImageIndex = parseInt(me.src.split("/").pop().split(".")[0]);
-
-    if (movementArea) {
-        movementArea.classList.add("eyes-movement");
-    }
 
     setInterval(async () => {
         currentImageIndex = currentImageIndex < 60 ? currentImageIndex + 1 : 1;
@@ -96,13 +91,19 @@
 
         try {
             await preloadImage(nextImageSrc);
+            if (currentImageIndex === 60)
+                if (
+                    movementArea &&
+                    !movementArea.classList.contains("eyes-movement")
+                )
+                    movementArea.classList.add("eyes-movement");
+
             me.src = nextImageSrc;
         } catch (error) {
             console.error(`Failed to load image: ${nextImageSrc}`, error);
         }
     }, 50);
 </script>
-
 
 <script>
     const container = document.getElementById("movementArea");
