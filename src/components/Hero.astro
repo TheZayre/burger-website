@@ -71,9 +71,9 @@
             image.src = src;
         });
 
-    const me = document.getElementById("me");
+    const me = document.getElementById("me") as HTMLImageElement;
 
-    let currentImageIndex = parseInt(me.src.split("/").pop().split(".")[0]);
+    let currentImageIndex = 1;
 
     setInterval(async () => {
         currentImageIndex = currentImageIndex < 60 ? currentImageIndex + 1 : 1;
