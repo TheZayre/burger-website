@@ -1,6 +1,6 @@
-<section class="bg-[rgb(0,0,0,0.2)] h-screen">
+<section class="h-screen">
     <div
-        class="absolute bg-[radial-gradient(circle,var(--color-primary-rgb)_10%,rgba(0,0,0,0)_80%)] w-full h-full z-1"
+        class="absolute bg-[radial-gradient(ellipse,var(--color-primary-rgb)_20%,rgba(0,0,0,0)_70%)] w-full h-full z-1"
     >
     </div>
     <article
@@ -28,12 +28,14 @@
                 >
                     <img
                         id="eyes"
+                        alt="eyes"
                         class="relative pointer-events-none w-[75%] h-[80%]"
                         src="/eyes.webp"
                     />
                 </div>
                 <img
                     id="me"
+                    alt="Jose Á. Perea García"
                     class="relative pointer-events-none w-48 sm:w-64"
                     src="/me/1.png"
                 />
@@ -43,26 +45,14 @@
                 class="h-full w-100 border-1 rounded-2xl bg-transparent p-4 sm:p-5 text-left"
             >
                 <p class="text-white text-xs sm:text-sm text-balance">
-                    ¡Hola! Mi nombre es Jose Ángel Perea García, <strong
-                        class="text-primary">graduado</strong
-                    > en Ingeniería Informática en la Universidad Politécnica de
-                    Valencia. Desde pequeño siempre me han interesado tanto los ámbitos
-                    relacionados con las ciencias de la salud como el tecnológico,
-                    de ahí que naciera mi interés por la informática y sus temas
-                    pertinentes al mismo, tales como la programación. Mis hobbies
-                    o aficionados son muchas, siendo alguna de ellas tan simples
-                    como escuchar música o disfrutar una buena película. Sin embargo,
-                    hay algunas en concreto con las que me siento bastante orgulloso,
-                    siendo estas la edición tanto de imagen como de vídeo, usando
-                    para la realización de estos programas como Photoshop, After
-                    Effects o Adobe Premier Pro.
+                    ¡Hola! Soy Jose, Apasionado por la tecnología y la creatividad en todas sus formas. No solo escribo código, sino que diseño soluciones que impactan y mejoran la vida de las personas. Me encanta aprender y compartir conocimientos, así que no dudes en contactarme si quieres hablar sobre tecnología, diseño o cualquier otra cosa. ¡Estoy aquí para ayudar!
                 </p>
             </div>
         </div>
     </article>
 
     <div
-        class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-transparent via-primary-rgb to-transparent opacity"
+        class="absolute bottom-0 w-full h-70 bg-gradient-to-b from-transparent via-primary-rgb to-transparent opacity-80 z-1"
     >
     </div>
 </section>
@@ -155,7 +145,7 @@
 <style>
     .eyes-movement {
         background-size: 200% 200%;
-        animation: eyesAnimation 3s infinite;
+        animation: eyesAnimation 3s normal infinite;
     }
 
     @keyframes eyesAnimation {
@@ -186,37 +176,6 @@
         }
         100% {
             background-position: 0% 50%;
-        }
-    }
-
-    .pathStyle {
-        position: absolute;
-        left: 43%;
-        top: 30%;
-        z-index: 1;
-        fill: none;
-    }
-
-    .pathStyle path {
-        stroke: white;
-        width: 100%;
-        height: 100%;
-        top: -20%;
-        left: -15%;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 0;
-        animation: pathAnimation 10s ease-in-out both;
-        d: path("M50,50 L80,50");
-    }
-
-    @keyframes pathAnimation {
-        0% {
-            stroke-dashoffset: 1000;
-        }
-        100% {
-            stroke-dashoffset: 0;
         }
     }
 </style>
