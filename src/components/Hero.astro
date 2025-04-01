@@ -43,18 +43,66 @@
                 class="h-full w-100 border-1 rounded-2xl bg-transparent p-4 sm:p-5 text-left"
             >
                 <p class="text-white text-xs sm:text-sm text-balance">
-                    Hola, soy Jose Ángel Perea García, la persona mas maricona
-                    del mundo.
+                    ¡Hola! Mi nombre es Jose Ángel Perea García, <strong
+                        class="text-primary">graduado</strong
+                    > en Ingeniería Informática en la Universidad Politécnica de
+                    Valencia. Desde pequeño siempre me han interesado tanto los ámbitos
+                    relacionados con las ciencias de la salud como el tecnológico,
+                    de ahí que naciera mi interés por la informática y sus temas
+                    pertinentes al mismo, tales como la programación. Mis hobbies
+                    o aficionados son muchas, siendo alguna de ellas tan simples
+                    como escuchar música o disfrutar una buena película. Sin embargo,
+                    hay algunas en concreto con las que me siento bastante orgulloso,
+                    siendo estas la edición tanto de imagen como de vídeo, usando
+                    para la realización de estos programas como Photoshop, After
+                    Effects o Adobe Premier Pro.
                 </p>
             </div>
         </div>
     </article>
+
+    <div
+        class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-transparent via-primary-rgb to-transparent opacity"
+    />
 </section>
 
-<!-- <div
-        class="absolute bottom-0 w-full h-50 bg-gradient-to-t from-white to-transparent"
-    >
-    </div> -->
+<script>
+    const movementArea = document.getElementById("movementArea");
+    if (movementArea) {
+        movementArea.classList.remove("eyes-movement");
+    }
+    
+    const preloadImage = (src: string) =>
+        new Promise((resolve, reject) => {
+            const image = new Image();
+            image.onload = resolve;
+            image.onerror = reject;
+            image.src = src;
+        });
+
+
+
+    const me = document.getElementById("me");
+
+    let currentImageIndex = parseInt(me.src.split("/").pop().split(".")[0]);
+
+    if (movementArea) {
+        movementArea.classList.add("eyes-movement");
+    }
+
+    setInterval(async () => {
+        currentImageIndex = currentImageIndex < 60 ? currentImageIndex + 1 : 1;
+        const nextImageSrc = `/me/${currentImageIndex}.png`;
+
+        try {
+            await preloadImage(nextImageSrc);
+            me.src = nextImageSrc;
+        } catch (error) {
+            console.error(`Failed to load image: ${nextImageSrc}`, error);
+        }
+    }, 50);
+</script>
+
 
 <script>
     const container = document.getElementById("movementArea");
@@ -103,41 +151,10 @@
     animate();
 </script>
 
-<script>
-    const preloadImage = (src: string) =>
-        new Promise((resolve, reject) => {
-            const image = new Image();
-            image.onload = resolve;
-            image.onerror = reject;
-            image.src = src;
-        });
-
-    await Promise.all(
-        Array.from({ length: 60 }, (_, i) => {
-            const index = i + 1;
-            return preloadImage(`/me/${index}.png`);
-        }),
-    );
-
-    const me = document.getElementById("me");
-
-    let currentImageIndex = parseInt(me.src.split("/").pop().split(".")[0]);
-
-    const movementArea = document.getElementById("movementArea");
-    if (movementArea) {
-        movementArea.classList.add("eyes-movement");
-    }
-
-    setInterval(() => {
-        currentImageIndex = currentImageIndex < 60 ? currentImageIndex + 1 : 1;
-        me.src = `/me/${currentImageIndex}.png`;
-    }, 50);
-</script>
-
 <style>
     .eyes-movement {
         background-size: 200% 200%;
-        animation: eyesAnimation 3s both infinite;
+        animation: eyesAnimation 3s infinite;
     }
 
     @keyframes eyesAnimation {
