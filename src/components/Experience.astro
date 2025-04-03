@@ -6,7 +6,7 @@ import { experiences } from "@/constants";
     <div class={`text-white flex-1 text-left`}>
         {
             experiences?.left.map((experience) => (
-                <div class={experience.height}>
+                <div class={`${experience.height}`}>
                     <h1 class="text-primary font-bold fade-in">
                         {experience.company}
                         <span class="text-xs">({experience.period})</span>
@@ -29,7 +29,7 @@ import { experiences } from "@/constants";
     <div class={`text-white flex-1 text-left`}>
         {
             experiences?.right.map((experience) => (
-                <div class={experience.height}>
+                <div class={`${experience.height} relative`}>
                     <h1 class="text-primary font-bold fade-in">
                         {experience.company}
                         <span class="text-xs">({experience.period})</span>
